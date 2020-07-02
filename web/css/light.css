@@ -15,6 +15,10 @@ tr.even.expandRow > :hover { background: #F9F9F9 !important; }
 tr.odd.expandRow > :hover { background: #FFF !important; }
 .expandRow > td { padding: 0 !important; border-top: 0px !important; }
 #cpu, #ram, #hdd, #network { min-width: 55px; max-width: 100px; }
+<<<<<<< HEAD
+=======
+#ping { min-width: 55px; max-width: 130px; }
+>>>>>>> upsream/master
 
 @media only screen and (max-width: 992px) {
 	#location, tr td:nth-child(5)		{ display:none; visibility:hidden; }
@@ -22,25 +26,45 @@ tr.odd.expandRow > :hover { background: #FFF !important; }
 @media only screen and (max-width: 720px) {
 	#type, tr td:nth-child(4)			{ display:none; visibility:hidden; }
 	#location, tr td:nth-child(5)		{ display:none; visibility:hidden; }
+<<<<<<< HEAD
+=======
+	#ping, tr td:nth-child(13)          { display:none; visibility:hidden; }
+>>>>>>> upsream/master
 }
 @media only screen and (max-width: 600px) {
 	#type, tr td:nth-child(4)			{ display:none; visibility:hidden; }
 	#location, tr td:nth-child(5)		{ display:none; visibility:hidden; }
 	#uptime, tr td:nth-child(6)			{ display:none; visibility:hidden; }
+<<<<<<< HEAD
+=======
+	#ping, tr td:nth-child(13)          { display:none; visibility:hidden; }
+>>>>>>> upsream/master
 }
 @media only screen and (max-width: 533px) {
 	#type, tr td:nth-child(4)			{ display:none; visibility:hidden; }
 	#location, tr td:nth-child(5)		{ display:none; visibility:hidden; }
 	#uptime, tr td:nth-child(6)			{ display:none; visibility:hidden; }
 	#network, tr td:nth-child(8)		{ display:none; visibility:hidden; }
+<<<<<<< HEAD
+=======
+	#ping, tr td:nth-child(13)          { display:none; visibility:hidden; }
+>>>>>>> upsream/master
 }
 @media only screen and (max-width: 450px) {
 	body								{ font-size: 10px; }
 	.content 							{ padding: 0; }
+<<<<<<< HEAD
 	#name, tr td:nth-child(3)			{ min-width: 10px; max-width: 25px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+=======
+	#name, tr td:nth-child(3)			{ min-width: 55px; max-width: 85px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+>>>>>>> upsream/master
 	#type, tr td:nth-child(4)			{ display:none; visibility:hidden; }
 	#location, tr td:nth-child(5)		{ display:none; visibility:hidden; }
 	#uptime, tr td:nth-child(6)			{ display:none; visibility:hidden; }
 	#network, tr td:nth-child(8)		{ display:none; visibility:hidden; }
 	#cpu, #ram, #hdd { min-width: 25px; max-width: 50px; }
+<<<<<<< HEAD
+=======
+	#ping, tr td:nth-child(13)          { display:none; visibility:hidden; }
+>>>>>>> upsream/master
 }

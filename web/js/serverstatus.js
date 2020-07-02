@@ -77,7 +77,11 @@ function uptime() {
 		if(result.reload)
 			setTimeout(function() { location.reload(true) }, 1000);
 
+<<<<<<< HEAD
 		for (var i = 0; i < result.servers.length; i++) {
+=======
+		for (var i = 0, rlen=result.servers.length; i < rlen; i++) {
+>>>>>>> upsream/master
 			var TableRow = $("#servers tr#r" + i);
 			var ExpandRow = $("#servers #rt" + i);
 			var hack; // fuck CSS for making me do this
@@ -94,6 +98,7 @@ function uptime() {
 						"<td id=\"load\">加载中</td>" +
 						"<td id=\"network\">加载中</td>" +
 						"<td id=\"traffic\">加载中</td>" +
+<<<<<<< HEAD
 						"<td id=\"cpu\"><div class=\"progress progress-striped active\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-warning\"><small>加载中</small></div></div></td>" +
 						"<td id=\"memory\"><div class=\"progress progress-striped active\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-warning\"><small>加载中</small></div></div></td>" +
 						"<td id=\"hdd\"><div class=\"progress progress-striped active\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-warning\"><small>加载中</small></div></div></td>" +
@@ -102,6 +107,19 @@ function uptime() {
 						"<div id=\"expand_mem\">加载中</div>" +
 						"<div id=\"expand_swap\">加载中</div>" +
 						"<div id=\"expand_hdd\">加载中</div>" +
+=======
+						"<td id=\"cpu\"><div class=\"progress\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-warning\"><small>加载中</small></div></div></td>" +
+						"<td id=\"memory\"><div class=\"progress\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-warning\"><small>加载中</small></div></div></td>" +
+						"<td id=\"hdd\"><div class=\"progress\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-warning\"><small>加载中</small></div></div></td>" +
+						"<td id=\"ping\"><div class=\"progress\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-warning\"><small>加载中</small></div></div></td>" +
+					"</tr>" +
+					"<tr class=\"expandRow " + hack + "\"><td colspan=\"16\"><div class=\"accordian-body collapse\" id=\"rt" + i + "\">" +
+						"<div id=\"expand_mem\">加载中</div>" +
+						"<div id=\"expand_swap\">加载中</div>" +
+						"<div id=\"expand_hdd\">加载中</div>" +
+						"<div id=\"expand_tupd\">加载中</div>" +
+						"<div id=\"expand_ping\">加载中</div>" +
+>>>>>>> upsream/master
 						"<div id=\"expand_custom\">加载中</div>" +
 					"</div></td></tr>"
 				);
@@ -116,9 +134,21 @@ function uptime() {
 			}
 
 			// Online4
+<<<<<<< HEAD
 			if (result.servers[i].online4) {
 				TableRow.children["online4"].children[0].children[0].className = "progress-bar progress-bar-success";
 				TableRow.children["online4"].children[0].children[0].innerHTML = "<small>开启</small>";
+=======
+			if (result.servers[i].online4 && !result.servers[i].online6) {
+				TableRow.children["online4"].children[0].children[0].className = "progress-bar progress-bar-success";
+				TableRow.children["online4"].children[0].children[0].innerHTML = "<small>IPv4</small>";
+			} else if (result.servers[i].online4 && result.servers[i].online6) {
+				TableRow.children["online4"].children[0].children[0].className = "progress-bar progress-bar-success";
+				TableRow.children["online4"].children[0].children[0].innerHTML = "<small>双栈</small>";
+			} else if (!result.servers[i].online4 && result.servers[i].online6) {
+			    TableRow.children["online4"].children[0].children[0].className = "progress-bar progress-bar-success";
+				TableRow.children["online4"].children[0].children[0].innerHTML = "<small>IPv6</small>";
+>>>>>>> upsream/master
 			} else {
 				TableRow.children["online4"].children[0].children[0].className = "progress-bar progress-bar-danger";
 				TableRow.children["online4"].children[0].children[0].innerHTML = "<small>关闭</small>";
@@ -134,6 +164,10 @@ function uptime() {
 			//}
 
 			// Ipstatus
+<<<<<<< HEAD
+=======
+			// mh361 or mh370, mourn mh370, 2014-03-08 01:20　lost from all over the world.
+>>>>>>> upsream/master
 			if (result.servers[i].ip_status) {
 				TableRow.children["ip_status"].children[0].children[0].className = "progress-bar progress-bar-success";
 				TableRow.children["ip_status"].children[0].children[0].innerHTML = "<small>MH361</small>";
@@ -165,6 +199,12 @@ function uptime() {
 					TableRow.children["hdd"].children[0].children[0].className = "progress-bar progress-bar-danger";
 					TableRow.children["hdd"].children[0].children[0].style.width = "100%";
 					TableRow.children["hdd"].children[0].children[0].innerHTML = "<small>关闭</small>";
+<<<<<<< HEAD
+=======
+					TableRow.children["ping"].children[0].children[0].className = "progress-bar progress-bar-danger";
+					TableRow.children["ping"].children[0].children[0].style.width = "100%";
+					TableRow.children["ping"].children[0].children[0].innerHTML = "<small>关闭</small>";
+>>>>>>> upsream/master
 					if(ExpandRow.hasClass("in")) {
 						ExpandRow.collapse("hide");
 					}
@@ -180,6 +220,7 @@ function uptime() {
 				// Uptime
 				TableRow.children["uptime"].innerHTML = result.servers[i].uptime;
 
+<<<<<<< HEAD
 				// Load
 				if(result.servers[i].load == -1) {
 					TableRow.children["load"].innerHTML = "–";
@@ -191,10 +232,18 @@ function uptime() {
 				    loadstr += " | "
 				    loadstr += result.servers[i].load_15.toFixed(2);
 					TableRow.children["load"].innerHTML = loadstr
+=======
+				// Load: default load_1, you can change show: load_1, load_5, load_15
+				if(result.servers[i].load == -1) {
+				    TableRow.children["load"].innerHTML = "–";
+				} else {
+				    TableRow.children["load"].innerHTML = result.servers[i].load_1.toFixed(2);
+>>>>>>> upsream/master
 				}
 
 				// Network
 				var netstr = "";
+<<<<<<< HEAD
 				if(result.servers[i].network_rx < 1000)
 					netstr += result.servers[i].network_rx.toFixed(0) + "B";
 				else if(result.servers[i].network_rx < 1000*1000)
@@ -208,6 +257,21 @@ function uptime() {
 					netstr += (result.servers[i].network_tx/1000).toFixed(0) + "K";
 				else
 					netstr += (result.servers[i].network_tx/1000/1000).toFixed(1) + "M";
+=======
+				if(result.servers[i].network_rx < 1024)
+					netstr += result.servers[i].network_rx.toFixed(0) + "B";
+				else if(result.servers[i].network_rx < 1024*1024)
+					netstr += (result.servers[i].network_rx/1024).toFixed(0) + "K";
+				else
+					netstr += (result.servers[i].network_rx/1024/1024).toFixed(1) + "M";
+				netstr += " | "
+				if(result.servers[i].network_tx < 1024)
+					netstr += result.servers[i].network_tx.toFixed(0) + "B";
+				else if(result.servers[i].network_tx < 1024*1024)
+					netstr += (result.servers[i].network_tx/1024).toFixed(0) + "K";
+				else
+					netstr += (result.servers[i].network_tx/1024/1024).toFixed(1) + "M";
+>>>>>>> upsream/master
 				TableRow.children["network"].innerHTML = netstr;
 
 				//Traffic
@@ -218,8 +282,15 @@ function uptime() {
 					trafficstr += (result.servers[i].network_in/1024).toFixed(0) + "K";
 				else if(result.servers[i].network_in < 1024*1024*1024)
 					trafficstr += (result.servers[i].network_in/1024/1024).toFixed(1) + "M";
+<<<<<<< HEAD
 				else
 					trafficstr += (result.servers[i].network_in/1024/1024/1024).toFixed(2) + "G";
+=======
+				else if(result.servers[i].network_in < 1024*1024*1024*1024)
+					trafficstr += (result.servers[i].network_in/1024/1024/1024).toFixed(2) + "G";
+                else
+                    trafficstr += (result.servers[i].network_in/1024/1024/1024/1024).toFixed(2) + "T";
+>>>>>>> upsream/master
 				trafficstr += " | "
 				if(result.servers[i].network_out < 1024)
 					trafficstr += result.servers[i].network_out.toFixed(0) + "B";
@@ -227,8 +298,15 @@ function uptime() {
 					trafficstr += (result.servers[i].network_out/1024).toFixed(0) + "K";
 				else if(result.servers[i].network_out < 1024*1024*1024)
 					trafficstr += (result.servers[i].network_out/1024/1024).toFixed(1) + "M";
+<<<<<<< HEAD
 				else
 					trafficstr += (result.servers[i].network_out/1024/1024/1024).toFixed(2) + "G";
+=======
+				else if(result.servers[i].network_out < 1024*1024*1024*1024)
+				    trafficstr += (result.servers[i].network_out/1024/1024/1024).toFixed(2) + "G";
+				else
+					trafficstr += (result.servers[i].network_out/1024/1024/1024/1024).toFixed(2) + "T";
+>>>>>>> upsream/master
 				TableRow.children["traffic"].innerHTML = trafficstr;
 
 				// CPU
@@ -267,6 +345,25 @@ function uptime() {
 				TableRow.children["hdd"].children[0].children[0].innerHTML = HDD + "%";
 				ExpandRow[0].children["expand_hdd"].innerHTML = "硬盘: " + bytesToSize(result.servers[i].hdd_used*1024*1024, 2) + " / " + bytesToSize(result.servers[i].hdd_total*1024*1024, 2);
 
+<<<<<<< HEAD
+=======
+                // delay time
+
+				// tcp, udp, process, thread count
+				ExpandRow[0].children["expand_tupd"].innerHTML = "TCP/UDP/进/线: " + result.servers[i].tcp_count + " / " + result.servers[i].udp_count + " / " + result.servers[i].process_count+ " / " + result.servers[i].thread_count;
+				ExpandRow[0].children["expand_ping"].innerHTML = "联通/电信/移动: " + result.servers[i].time_10010 + "ms / " + result.servers[i].time_189 + "ms / " + result.servers[i].time_10086 + "ms"
+
+                // ping
+                var PING_10010 = result.servers[i].ping_10010.toFixed(0);
+                var PING_189 = result.servers[i].ping_189.toFixed(0);
+                var PING_10086 = result.servers[i].ping_10086.toFixed(0);
+                if (PING_10010 >= 20 || PING_189 >= 20 || PING_10086 >= 20)
+                    TableRow.children["ping"].children[0].children[0].className = "progress-bar progress-bar-danger";
+                else
+                    TableRow.children["ping"].children[0].children[0].className = "progress-bar progress-bar-success";
+	            TableRow.children["ping"].children[0].children[0].innerHTML = PING_10010 + "%💻" + PING_189 + "%💻" + PING_10086 + "%";
+
+>>>>>>> upsream/master
 				// Custom
 				if (result.servers[i].custom) {
 					ExpandRow[0].children["expand_custom"].innerHTML = result.servers[i].custom
@@ -289,10 +386,21 @@ function uptime() {
 				//TableRow.children["online6"].children[0].children[0].innerHTML = "<small>错误</small>";
 				TableRow.children["ip_status"].children[0].children[0].className = "progress-bar progress-bar-error";
 				TableRow.children["ip_status"].children[0].children[0].innerHTML = "<small>错误</small>";
+<<<<<<< HEAD
 				TableRow.children["uptime"].innerHTML = "<div class=\"progress progress-striped active\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-error\"><small>错误</small></div></div>";
 				TableRow.children["load"].innerHTML = "<div class=\"progress progress-striped active\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-error\"><small>错误</small></div></div>";
 				TableRow.children["network"].innerHTML = "<div class=\"progress progress-striped active\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-error\"><small>错误</small></div></div>";
 				TableRow.children["traffic"].innerHTML = "<div class=\"progress progress-striped active\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-error\"><small>错误</small></div></div>";
+=======
+				TableRow.children["uptime"].children[0].children[0].className = "progress-bar progress-bar-error";
+				TableRow.children["uptime"].children[0].children[0].innerHTML = "<small>错误</small>";
+				TableRow.children["load"].children[0].children[0].className = "progress-bar progress-bar-error";
+				TableRow.children["load"].children[0].children[0].innerHTML = "<small>错误</small>";
+				TableRow.children["network"].children[0].children[0].className = "progress-bar progress-bar-error";
+				TableRow.children["network"].children[0].children[0].innerHTML = "<small>错误</small>";
+				TableRow.children["traffic"].children[0].children[0].className = "progress-bar progress-bar-error";
+				TableRow.children["traffic"].children[0].children[0].innerHTML = "<small>错误</small>";
+>>>>>>> upsream/master
 				TableRow.children["cpu"].children[0].children[0].className = "progress-bar progress-bar-error";
 				TableRow.children["cpu"].children[0].children[0].style.width = "100%";
 				TableRow.children["cpu"].children[0].children[0].innerHTML = "<small>错误</small>";
@@ -302,6 +410,12 @@ function uptime() {
 				TableRow.children["hdd"].children[0].children[0].className = "progress-bar progress-bar-error";
 				TableRow.children["hdd"].children[0].children[0].style.width = "100%";
 				TableRow.children["hdd"].children[0].children[0].innerHTML = "<small>错误</small>";
+<<<<<<< HEAD
+=======
+				TableRow.children["ping"].children[0].children[0].className = "progress-bar progress-bar-error";
+				TableRow.children["ping"].children[0].children[0].style.width = "100%";
+				TableRow.children["ping"].children[0].children[0].innerHTML = "<small>错误</small>";
+>>>>>>> upsream/master
 				if(ExpandRow.hasClass("in")) {
 					ExpandRow.collapse("hide");
 				}
@@ -321,8 +435,13 @@ function updateTime() {
 
 uptime();
 updateTime();
+<<<<<<< HEAD
 setInterval(uptime, 1000);
 setInterval(updateTime, 500);
+=======
+setInterval(uptime, 2000);
+setInterval(updateTime, 2000);
+>>>>>>> upsream/master
 
 
 // styleswitcher.js
